@@ -20,7 +20,7 @@ import pandas as pd
 #read ticker symbols from a file to python symbol list
 symbol = []
 #with open('tickersthemes.txt') as f:  
-with open('tickers.txt') as f:  
+with open('tickersthemes.txt') as f:  
     for line in f:
         symbol.append(line.strip())
 f.close

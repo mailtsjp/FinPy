@@ -17,8 +17,8 @@ from sklearn import cluster, covariance, manifold
 # Retrieve the data from Internet
 # build symbol dict from txt
 extdict = {}
-with open("dict.txt") as extfile:
-#with open("dictthemes.txt") as extfile:
+#with open("dict.txt") as extfile:
+with open("dictthemes.txt") as extfile:
     for line in extfile:
         (key, val) = line.split()
         extdict[str(key)] = val
@@ -29,7 +29,7 @@ with open("dict.txt") as extfile:
 # that we get high-tech firms, and before the 2008 crash). This kind of
 # historical data can be obtained for from APIs like the quandl.com and
 # alphavantage.co ones.
-
+"""
 symbol_dict = {
     'F': 'Ford',
     'COP': 'ConocoP',
@@ -39,7 +39,7 @@ symbol_dict = {
     'XRX': 'XRX',
     'MGK': 'MGK',
     }
-"""
+
 symbolstatic, names = np.array(sorted(symbol_dict.items())).T
 #print("symbols1")
 #print(symbol_dict)
@@ -60,8 +60,8 @@ for symbol in symbolext:
 
          #  https://raw.githubusercontent.com/mailtsjp/Quandlproj1/master/examples-data/financial-data/WFC.csv
     
-    quotes.append(pd.read_csv(url.format(symbol)))
-    
+    a=quotes.append(pd.read_csv(url.format(symbol)))
+   
 close_prices = np.vstack([q['Close'] for q in quotes])
 open_prices = np.vstack([q['Open'] for q in quotes])
 
