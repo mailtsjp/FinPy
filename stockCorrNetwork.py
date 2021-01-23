@@ -54,7 +54,7 @@ for symbol in symbolext:
     #url = ('https://raw.githubusercontent.com/scikit-learn/examples-data/'
     #       'master/financial-data/{}.csv')
     
-    url = ('https://raw.githubusercontent.com/mailtsjp/Quandlproj1/master/examples-data/'
+    url = ('https://raw.githubusercontent.com/mailtsjp/FinPy/master/examples-data/'
            'financial-data/{}.csv')
 
          #  https://raw.githubusercontent.com/mailtsjp/Quandlproj1/master/examples-data/financial-data/WFC.csv
