@@ -17,7 +17,8 @@ from sklearn import cluster, covariance, manifold
 # Retrieve the data from Internet
 # build symbol dict from txt
 extdict = {}
-with open("dictthemes.txt") as extfile:
+with open("dict.txt") as extfile:
+#with open("dictthemes.txt") as extfile:
     for line in extfile:
         (key, val) = line.split()
         extdict[str(key)] = val
@@ -54,7 +55,7 @@ for symbol in symbolext:
     #url = ('https://raw.githubusercontent.com/scikit-learn/examples-data/'
     #       'master/financial-data/{}.csv')
     
-    url = ('https://raw.githubusercontent.com/mailtsjp/Quandlproj1/master/examples-data/'
+    url = ('https://raw.githubusercontent.com/mailtsjp/finpy/master/examples-data/'
            'financial-data/{}.csv')
 
          #  https://raw.githubusercontent.com/mailtsjp/Quandlproj1/master/examples-data/financial-data/WFC.csv

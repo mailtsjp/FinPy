@@ -2,7 +2,7 @@
 from pandas_datareader import data
 #import pandas_datareader.data as web
 import datetime # as dt
-
+import os
 import matplotlib.pyplot as plt    
 import pandas as pd
 
@@ -19,7 +19,8 @@ import pandas as pd
 #Read tickers from fiile
 #read ticker symbols from a file to python symbol list
 symbol = []
-with open('tickersthemes.txt') as f:  
+#with open('tickersthemes.txt') as f:  
+with open('tickers.txt') as f:  
     for line in f:
         symbol.append(line.strip())
 f.close
@@ -35,6 +36,11 @@ start = datetime.date(end.year-5,1,1)
 
 #get ticker details
 i=0
+path = 'examples-data//financial-data//'
+file_dir = os.path.dirname(os.path.abspath(__file__))
+#csv_folder = 'examples-data//financial-data//'
+file_path = os.path.join(file_dir, path)
+print(file_path)
 
 #while i<len(symbol):
 for i in symbol:
@@ -42,7 +48,10 @@ for i in symbol:
     
     try:
         df = data.DataReader(i, 'yahoo', start, end).round(2)
-        df.iloc[:,[2,3]].to_csv(i+'.csv')
+        w2path= i + '.csv'
+        df.iloc[:,[2,3]].to_csv(file_path+ i + '.csv')
+        #df.to_csv(os.path.join(file_path,r'green1.csv'))
+
         #df.insert(0,'Symbol',symbol[i])
         #df = df.drop(['Adj Close'], axis=1)
         """
