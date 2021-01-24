@@ -19,6 +19,7 @@ from sklearn import cluster, covariance, manifold
 extdict = {}
 #with open("dict.txt") as extfile:
 with open("dictthemes.txt") as extfile:
+#with open("dictthemes2.txt") as extfile:
     for line in extfile:
         (key, val) = line.split()
         extdict[str(key)] = val

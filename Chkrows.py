@@ -3,47 +3,33 @@ import os
 import glob
 import pandas as pd
 
-path = 'examples-data//financial-data//'
+path = './examples-data/financial-data'
 file_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(file_dir, path)
 
-for filename in os.listdir(file_path):
-        if filename.endswith(".csv") : #or filename.endswith(".py"): 
-         # print(os.path.join(directory, filename))
-            reader = csv.reader(filename)
-            lines= len(list(reader))
-            print(filename)
-            print(lines)
-            continue
-        else:
-            continue
-
 """
-files = glob.glob(file_path +'/*.csv')
-d = {f: rawincount(f) for f in files}
-df = pd.Series(d).to_frame('rows')
+file_path = os.path.join(path)
+result = [i for i in glob.glob('*.{}'.format("csv"))]
 
-df = pd.DataFrame(columns=(file_path, 'rows'))
-for index,i in enumerate(os.listdir('.')):
-    df.loc[index] = [i,len(pd.read_csv(i).index)]
-"""
-"""
-print(file_dir)
+for fn in glob.glob('*.csv'):
 
-with open(file_dir) as f:
-    csv_reader = csv.reader(f)
-    for row in csv_reader:
-        pass
-    print(csv_reader.line_num)
+#for filename in os.listdir(file_dir):
+    with open(fn, 'r') as fileObj:
+     print("Rows Counted {} in the csv {}:".format(len(fileObj.readlines()) - 1, filename))  
+  """
 
+  #get current working dir, set count, and select file delimiter
+os.chdir(path)
 
+#parses through files and saves to a dict
+series={}
+for fn in glob.glob('*.csv'):
+    with open(fn) as f:
+        series[fn]=sum(1 for line in f if line.strip() and not line.startswith('#'))    
 
+print(series)
 
-files = glob.glob('files/*.csv')
-
-d = {f: sum(1 for line in open(f)) for f in files}
-
-print (pd.Series(d))
-
-print (pd.Series(d).rename('rows').rename_axis('filename').reset_index())
-"""
+#save the dictionary with key/val pairs to a csv
+with open('seriescount.csv', 'wb') as f: 
+    w = csv.DictWriter(f, series)
+    #f.close()
