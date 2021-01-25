@@ -17,8 +17,8 @@ from sklearn import cluster, covariance, manifold
 # Retrieve the data from Internet
 # build symbol dict from txt
 extdict = {}
-#with open("dict.txt") as extfile:
-with open("dictthemes.txt") as extfile:
+with open("dict.txt") as extfile:
+#with open("dictthemes.txt") as extfile:
 #with open("dictthemes2.txt") as extfile:
     for line in extfile:
         (key, val) = line.split()
