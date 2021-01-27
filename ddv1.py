@@ -16,9 +16,7 @@ stocks = [
         'ticker': "aapl",
         'name': 'MegaCap',
     }
-    ]
-    
-    
+    ]   
 
 #Method to get stock data
 def create_plot(stocks):
@@ -29,13 +27,20 @@ def create_plot(stocks):
         
         data[stock['ticker']] = pdr.DataReader(stock['ticker'], 
             data_source='yahoo',start=startdate)['Adj Close']
-  
-        # Calculate the returns for all the days
+    
+                # Calculate the returns for all the days
         returns = data.apply(lambda x: (x / x[0] * 100))
-        
+       
+        #Find max and min
+        i = np.argmax(np.maximum.accumulate(data[]) - data[]) # end of the period
+        j = np.argmax(data[:i]) # start of period
+
+                
         #for stock in stocks:
         ax[1].plot(returns[stock['ticker']], label=stock['name'],color="green")
         ax[1].legend([stock['name']],loc='best', ncol=10)
+        ax[1].plot([i, j], [data[i], data[j]], 'o', color='Red', markersize=10)
+
  
 
 #gridspec_kw={'hspace': 0}
